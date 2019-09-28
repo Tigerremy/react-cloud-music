@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>布局&amp;进出场动画开发 | React打造精美WebApp</title>
+    <meta name="description" content="采用React Hooks + Redux + immutable.js打造完整前端工作流，进阶前端综合能力">
+    
+    
+    <link rel="preload" href="/react-cloud-music/assets/css/0.styles.bfbe80ea.css" as="style"><link rel="preload" href="/react-cloud-music/assets/js/app.16cf2874.js" as="script"><link rel="preload" href="/react-cloud-music/assets/js/2.8eb8cfb1.js" as="script"><link rel="preload" href="/react-cloud-music/assets/js/46.802a45ca.js" as="script"><link rel="prefetch" href="/react-cloud-music/assets/js/10.df241456.js"><link rel="prefetch" href="/react-cloud-music/assets/js/11.a754447e.js"><link rel="prefetch" href="/react-cloud-music/assets/js/12.26cfa4f7.js"><link rel="prefetch" href="/react-cloud-music/assets/js/13.e358cb89.js"><link rel="prefetch" href="/react-cloud-music/assets/js/14.8019b96a.js"><link rel="prefetch" href="/react-cloud-music/assets/js/15.40fddd68.js"><link rel="prefetch" href="/react-cloud-music/assets/js/16.a0883417.js"><link rel="prefetch" href="/react-cloud-music/assets/js/17.4bd22e88.js"><link rel="prefetch" href="/react-cloud-music/assets/js/18.00d5e63e.js"><link rel="prefetch" href="/react-cloud-music/assets/js/19.30da8dbc.js"><link rel="prefetch" href="/react-cloud-music/assets/js/20.9eabb84e.js"><link rel="prefetch" href="/react-cloud-music/assets/js/21.e9d2af42.js"><link rel="prefetch" href="/react-cloud-music/assets/js/22.b7152763.js"><link rel="prefetch" href="/react-cloud-music/assets/js/23.ecfd68a7.js"><link rel="prefetch" href="/react-cloud-music/assets/js/24.435752ff.js"><link rel="prefetch" href="/react-cloud-music/assets/js/25.8821e985.js"><link rel="prefetch" href="/react-cloud-music/assets/js/26.3c101fb3.js"><link rel="prefetch" href="/react-cloud-music/assets/js/27.4ebba8fa.js"><link rel="prefetch" href="/react-cloud-music/assets/js/28.09c7c438.js"><link rel="prefetch" href="/react-cloud-music/assets/js/29.57f39d03.js"><link rel="prefetch" href="/react-cloud-music/assets/js/3.20223477.js"><link rel="prefetch" href="/react-cloud-music/assets/js/30.d821724d.js"><link rel="prefetch" href="/react-cloud-music/assets/js/31.9dd6ea51.js"><link rel="prefetch" href="/react-cloud-music/assets/js/32.a4d4e7d3.js"><link rel="prefetch" href="/react-cloud-music/assets/js/33.ec6fb865.js"><link rel="prefetch" href="/react-cloud-music/assets/js/34.611862dc.js"><link rel="prefetch" href="/react-cloud-music/assets/js/35.34885cd4.js"><link rel="prefetch" href="/react-cloud-music/assets/js/36.ba7c06b8.js"><link rel="prefetch" href="/react-cloud-music/assets/js/37.c9823707.js"><link rel="prefetch" href="/react-cloud-music/assets/js/38.2c08902f.js"><link rel="prefetch" href="/react-cloud-music/assets/js/39.4d20cae8.js"><link rel="prefetch" href="/react-cloud-music/assets/js/4.2f35b444.js"><link rel="prefetch" href="/react-cloud-music/assets/js/40.19bf3cb4.js"><link rel="prefetch" href="/react-cloud-music/assets/js/41.0579c014.js"><link rel="prefetch" href="/react-cloud-music/assets/js/42.fdd2be92.js"><link rel="prefetch" href="/react-cloud-music/assets/js/43.cac15ddd.js"><link rel="prefetch" href="/react-cloud-music/assets/js/44.ceecd36e.js"><link rel="prefetch" href="/react-cloud-music/assets/js/45.94f46a1a.js"><link rel="prefetch" href="/react-cloud-music/assets/js/47.11e17cdd.js"><link rel="prefetch" href="/react-cloud-music/assets/js/5.59baf809.js"><link rel="prefetch" href="/react-cloud-music/assets/js/6.859d2d52.js"><link rel="prefetch" href="/react-cloud-music/assets/js/7.84e2cc19.js"><link rel="prefetch" href="/react-cloud-music/assets/js/8.dfaf2119.js"><link rel="prefetch" href="/react-cloud-music/assets/js/9.05321740.js">
+    <link rel="stylesheet" href="/react-cloud-music/assets/css/0.styles.bfbe80ea.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/react-cloud-music/" class="home-link router-link-active"><!----> <span class="site-name">React打造精美WebApp</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="https://github.com/sanyuan0704/react-cloud-music" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  GitHub地址
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div><div class="nav-item"><a href="https://juejin.im/user/5c45ddf06fb9a04a006f5491" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  掘金
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="https://github.com/sanyuan0704/react-cloud-music" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  GitHub地址
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div><div class="nav-item"><a href="https://juejin.im/user/5c45ddf06fb9a04a006f5491" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  掘金
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>第一章:项目说明及初始化</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/react-cloud-music/chapter1/" class="sidebar-link">前言</a></li><li><a href="/react-cloud-music/chapter1/install.html" class="sidebar-link">项目介绍</a></li><li><a href="/react-cloud-music/chapter1/start.html" class="sidebar-link">初始化项目</a></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>第二章:搭建项目基础骨架</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/react-cloud-music/chapter2/intro.html" class="sidebar-link">简介</a></li><li><a href="/react-cloud-music/chapter2/route.html" class="sidebar-link">路由配置</a></li><li><a href="/react-cloud-music/chapter2/tab.html" class="sidebar-link">公共组件开发</a></li><li><a href="/react-cloud-music/chapter2/redux.html" class="sidebar-link">redux准备</a></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>第三章:推荐模块开发</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/react-cloud-music/chapter3/intro.html" class="sidebar-link">简介</a></li><li><a href="/react-cloud-music/chapter3/slider.html" class="sidebar-link">轮播组件开发</a></li><li><a href="/react-cloud-music/chapter3/list.html" class="sidebar-link">推荐列表开发</a></li><li><a href="/react-cloud-music/chapter3/scroll.html" class="sidebar-link">打造scroll基础组件</a></li><li><a href="/react-cloud-music/chapter3/redux.html" class="sidebar-link">数据层开发</a></li><li><a href="/react-cloud-music/chapter3/optimize.html" class="sidebar-link">性能及体验优化</a></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>第四章:歌手列表模块开发</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/react-cloud-music/chapter4/intro.html" class="sidebar-link">简介</a></li><li><a href="/react-cloud-music/chapter4/horizen-item.html" class="sidebar-link">横向分类列表开发</a></li><li><a href="/react-cloud-music/chapter4/list.html" class="sidebar-link">歌手列表部分的开发</a></li><li><a href="/react-cloud-music/chapter4/redux.html" class="sidebar-link">数据层开发</a></li><li><a href="/react-cloud-music/chapter4/load-more.html" class="sidebar-link">上拉/下拉加载更多实现</a></li><li><a href="/react-cloud-music/chapter4/optimize.html" class="sidebar-link">相关优化</a></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>第五章:排行榜单模块开发</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/react-cloud-music/chapter5/intro.html" class="sidebar-link">简介</a></li><li><a href="/react-cloud-music/chapter5/hooks.html" class="sidebar-link">思考题探讨</a></li><li><a href="/react-cloud-music/chapter5/redux.html" class="sidebar-link">数据层开发</a></li><li><a href="/react-cloud-music/chapter5/ui.html" class="sidebar-link">Rank组件开发</a></li><li><a href="/react-cloud-music/chapter5/optimize.html" class="sidebar-link">一些细节的优化</a></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>第六章:歌单详情模块开发</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/react-cloud-music/chapter6/intro.html" class="sidebar-link">简介</a></li><li><a href="/react-cloud-music/chapter6/transition.html" class="sidebar-link">切页动画实现</a></li><li><a href="/react-cloud-music/chapter6/template.html" class="sidebar-link">静态模板开发</a></li><li><a href="/react-cloud-music/chapter6/data.html" class="sidebar-link">数据层开发</a></li><li><a href="/react-cloud-music/chapter6/optimize.html" class="sidebar-link">代码封装及优化</a></li><li><a href="/react-cloud-music/chapter6/rank.html" class="sidebar-link">组件复用:榜单详情开发</a></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>第七章:歌手详情模块开发</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/react-cloud-music/chapter7/intro.html" class="sidebar-link">简介</a></li><li><a href="/react-cloud-music/chapter7/layout.html" class="sidebar-link">布局开发</a></li><li><a href="/react-cloud-music/chapter7/reaction.html" class="sidebar-link">交互逻辑实现</a></li><li><a href="/react-cloud-music/chapter7/data.html" class="sidebar-link">数据层开发</a></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>第八章:播放器内核实现(迷你和全屏版开发)</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/react-cloud-music/chapter8/intro.html" class="sidebar-link">简介</a></li><li><a href="/react-cloud-music/chapter8/data.html" class="sidebar-link">数据层准备</a></li><li><a href="/react-cloud-music/chapter8/ui.html" class="active sidebar-link">布局&amp;进出场动画开发</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/react-cloud-music/chapter8/ui.html#迷你版布局" class="sidebar-link">迷你版布局</a></li><li class="sidebar-sub-header"><a href="/react-cloud-music/chapter8/ui.html#全屏版布局" class="sidebar-link">全屏版布局</a></li><li class="sidebar-sub-header"><a href="/react-cloud-music/chapter8/ui.html#全屏版进场动画" class="sidebar-link">全屏版进场动画</a></li><li class="sidebar-sub-header"><a href="/react-cloud-music/chapter8/ui.html#出场动画" class="sidebar-link">出场动画</a></li></ul></li><li><a href="/react-cloud-music/chapter8/progress.html" class="sidebar-link">进度条组件开发(环形和线形)</a></li><li><a href="/react-cloud-music/chapter8/logic.html" class="sidebar-link">交互逻辑开发</a></li><li><a href="/react-cloud-music/chapter8/musicNote.html" class="sidebar-link">/chapter8/musicNote.html</a></li><li><a href="/react-cloud-music/chapter8/fix.html" class="sidebar-link">/chapter8/fix.html</a></li></ul></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>第九章:播放器内核实现(歌词和播放列表开发)</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>第十章:搜索模块开发</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>第十一章:redux及中间件原理解析</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>第十二章:本地存储相关功能开发</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>第十三章:系列回顾总结</span> <span class="arrow right"></span></p> <!----></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="布局-进出场动画开发"><a href="#布局-进出场动画开发" aria-hidden="true" class="header-anchor">#</a> 布局&amp;进出场动画开发</h1> <h2 id="迷你版布局"><a href="#迷你版布局" aria-hidden="true" class="header-anchor">#</a> 迷你版布局</h2> <p>首先在Player目录下新建miniPlayer子目录，</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">//miniPlayer/index.js</span>
+<span class="token keyword">import</span> React <span class="token keyword">from</span> <span class="token string">'react'</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> getName <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'../../../api/utils'</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> MiniPlayerContainer <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'./style'</span><span class="token punctuation">;</span>
+
+<span class="token keyword">function</span> <span class="token function">MiniPlayer</span><span class="token punctuation">(</span><span class="token parameter">props</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> <span class="token punctuation">{</span> song <span class="token punctuation">}</span> <span class="token operator">=</span> props<span class="token punctuation">;</span>
+  <span class="token keyword">return</span> <span class="token punctuation">(</span>
+      <span class="token operator">&lt;</span>MiniPlayerContainer<span class="token operator">&gt;</span>
+        <span class="token operator">&lt;</span>div className<span class="token operator">=</span><span class="token string">&quot;icon&quot;</span><span class="token operator">&gt;</span>
+          <span class="token operator">&lt;</span>div className<span class="token operator">=</span><span class="token string">&quot;imgWrapper&quot;</span><span class="token operator">&gt;</span>
+            <span class="token operator">&lt;</span>img className<span class="token operator">=</span><span class="token string">&quot;play&quot;</span> src<span class="token operator">=</span><span class="token punctuation">{</span>song<span class="token punctuation">.</span>al<span class="token punctuation">.</span>picUrl<span class="token punctuation">}</span> width<span class="token operator">=</span><span class="token string">&quot;40&quot;</span> height<span class="token operator">=</span><span class="token string">&quot;40&quot;</span> alt<span class="token operator">=</span><span class="token string">&quot;img&quot;</span><span class="token operator">/</span><span class="token operator">&gt;</span>
+          <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span>
+        <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span>
+        <span class="token operator">&lt;</span>div className<span class="token operator">=</span><span class="token string">&quot;text&quot;</span><span class="token operator">&gt;</span>
+          <span class="token operator">&lt;</span>h2 className<span class="token operator">=</span><span class="token string">&quot;name&quot;</span><span class="token operator">&gt;</span><span class="token punctuation">{</span>song<span class="token punctuation">.</span>name<span class="token punctuation">}</span><span class="token operator">&lt;</span><span class="token operator">/</span>h2<span class="token operator">&gt;</span>
+          <span class="token operator">&lt;</span>p className<span class="token operator">=</span><span class="token string">&quot;desc&quot;</span><span class="token operator">&gt;</span><span class="token punctuation">{</span><span class="token function">getName</span><span class="token punctuation">(</span>song<span class="token punctuation">.</span>ar<span class="token punctuation">)</span><span class="token punctuation">}</span><span class="token operator">&lt;</span><span class="token operator">/</span>p<span class="token operator">&gt;</span>
+        <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span>
+        <span class="token operator">&lt;</span>div className<span class="token operator">=</span><span class="token string">&quot;control&quot;</span><span class="token operator">&gt;</span>
+          <span class="token operator">&lt;</span>i className<span class="token operator">=</span><span class="token string">&quot;iconfont&quot;</span><span class="token operator">&gt;</span><span class="token operator">&amp;</span>#xe650<span class="token punctuation">;</span><span class="token operator">&lt;</span><span class="token operator">/</span>i<span class="token operator">&gt;</span>
+        <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span>
+        <span class="token operator">&lt;</span>div className<span class="token operator">=</span><span class="token string">&quot;control&quot;</span><span class="token operator">&gt;</span>
+          <span class="token operator">&lt;</span>i className<span class="token operator">=</span><span class="token string">&quot;iconfont&quot;</span><span class="token operator">&gt;</span><span class="token operator">&amp;</span>#xe640<span class="token punctuation">;</span><span class="token operator">&lt;</span><span class="token operator">/</span>i<span class="token operator">&gt;</span>
+        <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span>
+      <span class="token operator">&lt;</span><span class="token operator">/</span>MiniPlayerContainer<span class="token operator">&gt;</span>
+  <span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">export</span> <span class="token keyword">default</span> React<span class="token punctuation">.</span><span class="token function">memo</span><span class="token punctuation">(</span>MiniPlayer<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><p>样式组件对应如下，在style.js中：</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">import</span> styled<span class="token punctuation">,</span> <span class="token punctuation">{</span>keyframes<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'styled-components'</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> style <span class="token keyword">from</span> <span class="token string">'../../../assets/global-style'</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> rotate <span class="token operator">=</span> keyframes<span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">
+  0%{
+    transform: rotate(0);
+  }
+  100%{
+    transform: rotate(360deg);
+  }
+</span><span class="token template-punctuation string">`</span></span>
+
+<span class="token keyword">export</span> <span class="token keyword">const</span> MiniPlayerContainer <span class="token operator">=</span> styled<span class="token punctuation">.</span>div<span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">
+  display: flex;
+  align-items: center;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  z-index: 1000;
+  width: 100%;
+  height: 60px;
+  background: </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>style<span class="token punctuation">[</span><span class="token string">&quot;highlight-background-color&quot;</span><span class="token punctuation">]</span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">;
+  &amp;.mini-enter{
+    transform: translate3d(0, 100%, 0);
+  }
+  &amp;.mini-enter-active{
+    transform: translate3d(0, 0, 0);
+    transition: all 0.4s;
+  }
+  &amp;.mini-exit-active{
+    transform: translate3d(0, 100%, 0);
+    transition: all .4s
+  }
+  .icon{
+    flex: 0 0 40px;
+    width: 40px;
+    height: 40px;
+    padding: 0 10px 0 20px;
+    .imgWrapper{
+      width: 100%;
+      height: 100%;
+      img{
+        border-radius: 50%;
+        &amp;.play{
+          animation: </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>rotate<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string"> 10s infinite;
+          &amp;.pause{
+            animation-play-state: paused;
+          }
+        }
+      }
+    }
+  }
+  .text{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex: 1;
+    line-height: 20px;
+    overflow: hidden;
+    .name{
+      margin-bottom: 2px;
+      font-size: </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>style<span class="token punctuation">[</span><span class="token string">&quot;font-size-m&quot;</span><span class="token punctuation">]</span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">;
+      color: </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>style<span class="token punctuation">[</span><span class="token string">&quot;font-color-desc&quot;</span><span class="token punctuation">]</span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">;
+      </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>style<span class="token punctuation">.</span><span class="token function">noWrap</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">
+    }
+    .desc {
+      font-size: </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>style<span class="token punctuation">[</span><span class="token string">&quot;font-size-s&quot;</span><span class="token punctuation">]</span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">;
+      color: </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>style<span class="token punctuation">[</span><span class="token string">&quot;font-color-desc-v2&quot;</span><span class="token punctuation">]</span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">;
+      </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>style<span class="token punctuation">.</span><span class="token function">noWrap</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">
+    }
+  }
+  .control{
+    flex: 0 0 30px;
+    padding: 0 10px;
+    .iconfont, .icon-playlist{
+      font-size: 30px;
+      color: </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>style<span class="token punctuation">[</span><span class="token string">&quot;theme-color&quot;</span><span class="token punctuation">]</span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">;
+    }
+    .icon-mini{
+      font-size: 16px;
+      position: absolute;
+      left: 8px;
+      top: 8px;
+      &amp;.icon-play{
+        left: 9px
+      }
+    }
+  }
+</span><span class="token template-punctuation string">`</span></span>
+</code></pre></div><p>当然，在Player/index.js下也要做一些修改:</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">//Player/index.js修改内容如下</span>
+<span class="token keyword">import</span> MiniPlayer <span class="token keyword">from</span> <span class="token string">'./miniPlayer'</span><span class="token punctuation">;</span>
+
+<span class="token keyword">function</span> <span class="token function">Player</span><span class="token punctuation">(</span><span class="token parameter">props</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> currentSong <span class="token operator">=</span> <span class="token punctuation">{</span>
+    al<span class="token punctuation">:</span> <span class="token punctuation">{</span> picUrl<span class="token punctuation">:</span> <span class="token string">&quot;https://p1.music.126.net/JL_id1CFwNJpzgrXwemh4Q==/109951164172892390.jpg&quot;</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    name<span class="token punctuation">:</span> <span class="token string">&quot;木偶人&quot;</span><span class="token punctuation">,</span>
+    ar<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token punctuation">{</span>name<span class="token punctuation">:</span> <span class="token string">&quot;薛之谦&quot;</span><span class="token punctuation">}</span><span class="token punctuation">]</span>
+  <span class="token punctuation">}</span>
+  <span class="token keyword">return</span> <span class="token punctuation">(</span>
+    <span class="token operator">&lt;</span>div<span class="token operator">&gt;</span>
+      <span class="token operator">&lt;</span>MiniPlayer song<span class="token operator">=</span><span class="token punctuation">{</span>currentSong<span class="token punctuation">}</span><span class="token operator">/</span><span class="token operator">&gt;</span>
+    <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span>
+  <span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">//...</span>
+</code></pre></div><p>现在大家能看到的应该是这个样子了。</p> <img src="/react-cloud-music/chapter8/miniLayout.jpg" alt="project"> <p>这里暂停按钮比较单调，因为没有包括进度条，这个组件下一节来开发，现在先用图标代替。</p> <p>miniPlayer的布局就这些，还算比较简单，我们现在马上过渡到全屏版本的布局中。</p> <h2 id="全屏版布局"><a href="#全屏版布局" aria-hidden="true" class="header-anchor">#</a> 全屏版布局</h2> <p>给大家整理了一下，现在大致的布局是这样。</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">//normalPlayer/index.js</span>
+<span class="token keyword">import</span> React <span class="token keyword">from</span> <span class="token string">&quot;react&quot;</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span>  getName <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&quot;../../../api/utils&quot;</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span>
+  NormalPlayerContainer<span class="token punctuation">,</span>
+  Top<span class="token punctuation">,</span>
+  Middle<span class="token punctuation">,</span>
+  Bottom<span class="token punctuation">,</span>
+  Operators<span class="token punctuation">,</span>
+  CDWrapper<span class="token punctuation">,</span>
+<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&quot;./style&quot;</span><span class="token punctuation">;</span>
+
+<span class="token keyword">function</span> <span class="token function">NormalPlayer</span><span class="token punctuation">(</span><span class="token parameter">props</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> <span class="token punctuation">{</span>song<span class="token punctuation">}</span> <span class="token operator">=</span>  props<span class="token punctuation">;</span>
+  <span class="token keyword">return</span> <span class="token punctuation">(</span>
+    <span class="token operator">&lt;</span>NormalPlayerContainer<span class="token operator">&gt;</span>
+      <span class="token operator">&lt;</span>div className<span class="token operator">=</span><span class="token string">&quot;background&quot;</span><span class="token operator">&gt;</span>
+        <span class="token operator">&lt;</span>img
+          src<span class="token operator">=</span><span class="token punctuation">{</span>song<span class="token punctuation">.</span>al<span class="token punctuation">.</span>picUrl <span class="token operator">+</span> <span class="token string">&quot;?param=300x300&quot;</span><span class="token punctuation">}</span>
+          width<span class="token operator">=</span><span class="token string">&quot;100%&quot;</span>
+          height<span class="token operator">=</span><span class="token string">&quot;100%&quot;</span>
+          alt<span class="token operator">=</span><span class="token string">&quot;歌曲图片&quot;</span>
+        <span class="token operator">/</span><span class="token operator">&gt;</span>
+      <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span>
+      <span class="token operator">&lt;</span>div className<span class="token operator">=</span><span class="token string">&quot;background layer&quot;</span><span class="token operator">&gt;</span><span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span>
+      <span class="token operator">&lt;</span>Top className<span class="token operator">=</span><span class="token string">&quot;top&quot;</span><span class="token operator">&gt;</span>
+        <span class="token operator">&lt;</span>div className<span class="token operator">=</span><span class="token string">&quot;back&quot;</span><span class="token operator">&gt;</span>
+          <span class="token operator">&lt;</span>i className<span class="token operator">=</span><span class="token string">&quot;iconfont icon-back&quot;</span><span class="token operator">&gt;</span><span class="token operator">&amp;</span>#xe662<span class="token punctuation">;</span><span class="token operator">&lt;</span><span class="token operator">/</span>i<span class="token operator">&gt;</span>
+        <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span>
+        <span class="token operator">&lt;</span>h1 className<span class="token operator">=</span><span class="token string">&quot;title&quot;</span><span class="token operator">&gt;</span><span class="token punctuation">{</span>song<span class="token punctuation">.</span>name<span class="token punctuation">}</span><span class="token operator">&lt;</span><span class="token operator">/</span>h1<span class="token operator">&gt;</span>
+        <span class="token operator">&lt;</span>h1 className<span class="token operator">=</span><span class="token string">&quot;subtitle&quot;</span><span class="token operator">&gt;</span><span class="token punctuation">{</span><span class="token function">getName</span><span class="token punctuation">(</span>song<span class="token punctuation">.</span>ar<span class="token punctuation">)</span><span class="token punctuation">}</span><span class="token operator">&lt;</span><span class="token operator">/</span>h1<span class="token operator">&gt;</span>
+      <span class="token operator">&lt;</span><span class="token operator">/</span>Top<span class="token operator">&gt;</span>
+      <span class="token operator">&lt;</span>Middle<span class="token operator">&gt;</span>
+        <span class="token operator">&lt;</span>CDWrapper<span class="token operator">&gt;</span>
+          <span class="token operator">&lt;</span>div className<span class="token operator">=</span><span class="token string">&quot;cd&quot;</span><span class="token operator">&gt;</span>
+            <span class="token operator">&lt;</span>img
+              className<span class="token operator">=</span><span class="token string">&quot;image play&quot;</span>
+              src<span class="token operator">=</span><span class="token punctuation">{</span>song<span class="token punctuation">.</span>al<span class="token punctuation">.</span>picUrl <span class="token operator">+</span> <span class="token string">&quot;?param=400x400&quot;</span><span class="token punctuation">}</span>
+              alt<span class="token operator">=</span><span class="token string">&quot;&quot;</span>
+            <span class="token operator">/</span><span class="token operator">&gt;</span>
+          <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span>
+        <span class="token operator">&lt;</span><span class="token operator">/</span>CDWrapper<span class="token operator">&gt;</span>
+      <span class="token operator">&lt;</span><span class="token operator">/</span>Middle<span class="token operator">&gt;</span>
+      <span class="token operator">&lt;</span>Bottom className<span class="token operator">=</span><span class="token string">&quot;bottom&quot;</span><span class="token operator">&gt;</span>
+        <span class="token operator">&lt;</span>Operators<span class="token operator">&gt;</span>
+          <span class="token operator">&lt;</span>div className<span class="token operator">=</span><span class="token string">&quot;icon i-left&quot;</span> <span class="token operator">&gt;</span>
+            <span class="token operator">&lt;</span>i className<span class="token operator">=</span><span class="token string">&quot;iconfont&quot;</span><span class="token operator">&gt;</span><span class="token operator">&amp;</span>#xe625<span class="token punctuation">;</span><span class="token operator">&lt;</span><span class="token operator">/</span>i<span class="token operator">&gt;</span>
+          <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span>
+          <span class="token operator">&lt;</span>div className<span class="token operator">=</span><span class="token string">&quot;icon i-left&quot;</span><span class="token operator">&gt;</span>
+            <span class="token operator">&lt;</span>i className<span class="token operator">=</span><span class="token string">&quot;iconfont&quot;</span><span class="token operator">&gt;</span><span class="token operator">&amp;</span>#xe6e1<span class="token punctuation">;</span><span class="token operator">&lt;</span><span class="token operator">/</span>i<span class="token operator">&gt;</span>
+          <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span>
+          <span class="token operator">&lt;</span>div className<span class="token operator">=</span><span class="token string">&quot;icon i-center&quot;</span><span class="token operator">&gt;</span>
+            <span class="token operator">&lt;</span>i className<span class="token operator">=</span><span class="token string">&quot;iconfont&quot;</span><span class="token operator">&gt;</span><span class="token operator">&amp;</span>#xe723<span class="token punctuation">;</span><span class="token operator">&lt;</span><span class="token operator">/</span>i<span class="token operator">&gt;</span>
+          <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span>
+          <span class="token operator">&lt;</span>div className<span class="token operator">=</span><span class="token string">&quot;icon i-right&quot;</span><span class="token operator">&gt;</span>
+            <span class="token operator">&lt;</span>i className<span class="token operator">=</span><span class="token string">&quot;iconfont&quot;</span><span class="token operator">&gt;</span><span class="token operator">&amp;</span>#xe718<span class="token punctuation">;</span><span class="token operator">&lt;</span><span class="token operator">/</span>i<span class="token operator">&gt;</span>
+          <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span>
+          <span class="token operator">&lt;</span>div className<span class="token operator">=</span><span class="token string">&quot;icon i-right&quot;</span><span class="token operator">&gt;</span>
+            <span class="token operator">&lt;</span>i className<span class="token operator">=</span><span class="token string">&quot;iconfont&quot;</span><span class="token operator">&gt;</span><span class="token operator">&amp;</span>#xe640<span class="token punctuation">;</span><span class="token operator">&lt;</span><span class="token operator">/</span>i<span class="token operator">&gt;</span>
+          <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span>
+        <span class="token operator">&lt;</span><span class="token operator">/</span>Operators<span class="token operator">&gt;</span>
+      <span class="token operator">&lt;</span><span class="token operator">/</span>Bottom<span class="token operator">&gt;</span>
+    <span class="token operator">&lt;</span><span class="token operator">/</span>NormalPlayerContainer<span class="token operator">&gt;</span>
+  <span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">export</span> <span class="token keyword">default</span> React<span class="token punctuation">.</span><span class="token function">memo</span><span class="token punctuation">(</span>NormalPlayer<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><p>相应的style.js如下：</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">import</span> styled<span class="token punctuation">,</span> <span class="token punctuation">{</span> keyframes <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&quot;styled-components&quot;</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> style <span class="token keyword">from</span> <span class="token string">&quot;../../../assets/global-style&quot;</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> rotate <span class="token operator">=</span> keyframes<span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">
+  0%{
+    transform: rotate(0);
+  }
+  100%{
+    transform: rotate(360deg);
+  }
+</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">;</span>
+<span class="token keyword">export</span> <span class="token keyword">const</span> NormalPlayerContainer <span class="token operator">=</span> styled<span class="token punctuation">.</span>div<span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 150;
+  background: </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>style<span class="token punctuation">[</span><span class="token string">&quot;background-color&quot;</span><span class="token punctuation">]</span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">;
+  .background {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    opacity: 0.6;
+    filter: blur(20px);
+    &amp;.layer {
+      background: </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>style<span class="token punctuation">[</span><span class="token string">&quot;font-color-desc&quot;</span><span class="token punctuation">]</span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">;
+      opacity: 0.3;
+      filter: none;
+    }
+  }
+</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">;</span>
+<span class="token keyword">export</span> <span class="token keyword">const</span> Top <span class="token operator">=</span> styled<span class="token punctuation">.</span>div<span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">
+  position: relative;
+  margin-bottom: 25px;
+  .back {
+    position: absolute;
+    top: 0;
+    left: 6px;
+    z-index: 50;
+    .iconfont {
+      display: block;
+      padding: 9px;
+      font-size: 24px;
+      color: </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>style<span class="token punctuation">[</span><span class="token string">&quot;font-color-desc&quot;</span><span class="token punctuation">]</span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">;
+      font-weight: bold;
+      transform: rotate(90deg);
+    }
+  }
+  .title {
+    width: 70%;
+    margin: 0 auto;
+    line-height: 40px;
+    text-align: center;
+    font-size: </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>style<span class="token punctuation">[</span><span class="token string">&quot;font-size-l&quot;</span><span class="token punctuation">]</span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">;
+    color: </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>style<span class="token punctuation">[</span><span class="token string">&quot;font-color-desc&quot;</span><span class="token punctuation">]</span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">;
+    </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>style<span class="token punctuation">.</span><span class="token function">noWrap</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">;
+  }
+  .subtitle {
+    line-height: 20px;
+    text-align: center;
+    font-size: </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>style<span class="token punctuation">[</span><span class="token string">&quot;font-size-m&quot;</span><span class="token punctuation">]</span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">;
+    color: </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>style<span class="token punctuation">[</span><span class="token string">&quot;font-color-desc-v2&quot;</span><span class="token punctuation">]</span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">;
+    </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>style<span class="token punctuation">.</span><span class="token function">noWrap</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">;
+  }
+</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">;</span>
+<span class="token keyword">export</span> <span class="token keyword">const</span> Middle <span class="token operator">=</span> styled<span class="token punctuation">.</span>div<span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">
+  position: fixed;
+  width: 100%;
+  top: 80px;
+  bottom: 170px;
+  white-space: nowrap;
+  font-size: 0;
+  overflow: hidden;
+</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">;</span>
+<span class="token keyword">export</span> <span class="token keyword">const</span> CDWrapper <span class="token operator">=</span> styled<span class="token punctuation">.</span>div<span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">
+  position: absolute;
+  margin: auto;
+  top: 10%;
+  left: 0;
+  right: 0;
+  width: 80%;
+  box-sizing: border-box;
+  height: 80vw;
+  .cd {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    .image {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      box-sizing: border-box;
+      border-radius: 50%;
+      border: 10px solid rgba(255, 255, 255, 0.1);
+    }
+    .play {
+      animation: </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>rotate<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string"> 20s linear infinite;
+      &amp;.pause {
+        animation-play-state: paused;
+      }
+    }
+  }
+  .playing_lyric {
+    margin-top: 20px;
+    font-size: 14px;
+    line-height: 20px;
+    white-space: normal;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.5);
+  }
+</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">;</span>
+
+<span class="token keyword">export</span> <span class="token keyword">const</span> Bottom <span class="token operator">=</span> styled<span class="token punctuation">.</span>div<span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">
+  position: absolute;
+  bottom: 50px;
+  width: 100%;
+</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">;</span>
+<span class="token keyword">export</span> <span class="token keyword">const</span> ProgressWrapper <span class="token operator">=</span> styled<span class="token punctuation">.</span>div<span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">
+  display: flex;
+  align-items: center;
+  width: 80%;
+  margin: 0px auto;
+  padding: 10px 0;
+  .time {
+    color: </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>style<span class="token punctuation">[</span><span class="token string">&quot;font-color-desc&quot;</span><span class="token punctuation">]</span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">;
+    font-size: </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>style<span class="token punctuation">[</span><span class="token string">&quot;font-size-s&quot;</span><span class="token punctuation">]</span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">;
+    flex: 0 0 30px;
+    line-height: 30px;
+    width: 30px;
+    &amp;.time-l {
+      text-align: left;
+    }
+    &amp;.time-r {
+      text-align: right;
+    }
+  }
+  .progress-bar-wrapper {
+    flex: 1;
+  }
+</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">;</span>
+<span class="token keyword">export</span> <span class="token keyword">const</span> Operators <span class="token operator">=</span> styled<span class="token punctuation">.</span>div<span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">
+  display: flex;
+  align-items: center;
+  .icon {
+    font-weight: 300;
+    flex: 1;
+    color: </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>style<span class="token punctuation">[</span><span class="token string">&quot;font-color-desc&quot;</span><span class="token punctuation">]</span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">;
+    &amp;.disable {
+      color: </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>style<span class="token punctuation">[</span><span class="token string">&quot;theme-color-shadow&quot;</span><span class="token punctuation">]</span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">;
+    }
+    i {
+      font-weight: 300;
+      font-size: 30px;
+    }
+  }
+  .i-left {
+    text-align: right;
+  }
+  .i-center {
+    padding: 0 20px;
+    text-align: center;
+    i {
+      font-size: 40px;
+    }
+  }
+  .i-right {
+    text-align: left;
+  }
+  .icon-favorite {
+    color: </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>style<span class="token punctuation">[</span><span class="token string">&quot;theme-color&quot;</span><span class="token punctuation">]</span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">;
+  }
+</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">;</span>
+</code></pre></div><p>现在大家可以看到基本的布局啦。如下图, 并且唱片部分正在旋转:</p> <img src="/react-cloud-music/chapter8/normalLayout.jpg" alt="project"> <p>其实这部分的布局相对之前的几个组件还是相当简单的，不做赘述了，我们把重心放在后面更出彩的部分————进出场动画。</p> <h2 id="全屏版进场动画"><a href="#全屏版进场动画" aria-hidden="true" class="header-anchor">#</a> 全屏版进场动画</h2> <h3 id="引入状态"><a href="#引入状态" aria-hidden="true" class="header-anchor">#</a> 引入状态</h3> <p>既然是要进场，那就必须涉及到状态的改变了，具体来说我们现在需要拿出redux中的fullScreen并做相应的改变。</p> <p>由于父组件连接了redux，现在normalPlayer只需从父组件接受相应的变量和方法即可。</p> <p>首先在父组件中传props:</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">function</span> <span class="token function">Player</span><span class="token punctuation">(</span><span class="token parameter">props</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> <span class="token punctuation">{</span> fullScreen <span class="token punctuation">}</span> <span class="token operator">=</span> props<span class="token punctuation">;</span>
+
+  <span class="token keyword">const</span> <span class="token punctuation">{</span> toggleFullScreenDispatch <span class="token punctuation">}</span> <span class="token operator">=</span> props<span class="token punctuation">;</span>
+
+  <span class="token comment">//...</span>
+  <span class="token keyword">return</span> <span class="token punctuation">(</span>
+    <span class="token operator">&lt;</span>div<span class="token operator">&gt;</span> 
+      <span class="token operator">&lt;</span>MiniPlayer
+        song<span class="token operator">=</span><span class="token punctuation">{</span>currentSong<span class="token punctuation">}</span>
+        fullScreen<span class="token operator">=</span><span class="token punctuation">{</span>fullScreen<span class="token punctuation">}</span>
+        toggleFullScreen<span class="token operator">=</span><span class="token punctuation">{</span>toggleFullScreenDispatch<span class="token punctuation">}</span>
+      <span class="token operator">/</span><span class="token operator">&gt;</span>
+      <span class="token operator">&lt;</span>NormalPlayer 
+        song<span class="token operator">=</span><span class="token punctuation">{</span>currentSong<span class="token punctuation">}</span>
+        fullScreen<span class="token operator">=</span><span class="token punctuation">{</span>fullScreen<span class="token punctuation">}</span>
+        toggleFullScreen<span class="token operator">=</span><span class="token punctuation">{</span>toggleFullScreenDispatch<span class="token punctuation">}</span>
+      <span class="token operator">/</span><span class="token operator">&gt;</span>
+    <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span>
+  <span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>然后在normalPlayer中接收。</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">const</span> <span class="token punctuation">{</span> song<span class="token punctuation">,</span> fullScreen <span class="token punctuation">}</span> <span class="token operator">=</span>  props<span class="token punctuation">;</span>
+<span class="token keyword">const</span> <span class="token punctuation">{</span> toggleFullScreenDispatch <span class="token punctuation">}</span> <span class="token operator">=</span> props<span class="token punctuation">;</span>
+
+<span class="token keyword">return</span> <span class="token punctuation">(</span>
+  <span class="token operator">&lt;</span>CSSTransition
+    classNames<span class="token operator">=</span><span class="token string">&quot;normal&quot;</span>
+    <span class="token keyword">in</span><span class="token operator">=</span><span class="token punctuation">{</span>fullScreen<span class="token punctuation">}</span>
+    timeout<span class="token operator">=</span><span class="token punctuation">{</span><span class="token number">400</span><span class="token punctuation">}</span>
+    mountOnEnter
+    <span class="token comment">// onEnter={enter}</span>
+    <span class="token comment">// onEntered={afterEnter}</span>
+    <span class="token comment">// onExit={leave}</span>
+    <span class="token comment">// onExited={afterLeave}</span>
+  <span class="token operator">&gt;</span>
+  <span class="token comment">//组件代码</span>
+  <span class="token operator">&lt;</span><span class="token operator">/</span>CSSTransition<span class="token operator">&gt;</span>
+<span class="token punctuation">)</span>
+</code></pre></div><p>当然，这里的钩子函数还没有定义。因为还有一些准备工作需要提前做一下。</p> <h3 id="准备工作"><a href="#准备工作" aria-hidden="true" class="header-anchor">#</a> 准备工作</h3> <p>首先miniPlayer里面，当fullScreen为false的时候应该不显示，我们也可以运用一下CSSTransition：</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">//引入useRef</span>
+
+<span class="token keyword">const</span> miniPlayerRef <span class="token operator">=</span> <span class="token function">useRef</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">return</span> <span class="token punctuation">(</span>
+  <span class="token operator">&lt;</span>CSSTransition 
+    <span class="token keyword">in</span><span class="token operator">=</span><span class="token punctuation">{</span><span class="token operator">!</span>fullScreen<span class="token punctuation">}</span> 
+    timeout<span class="token operator">=</span><span class="token punctuation">{</span><span class="token number">400</span><span class="token punctuation">}</span> 
+    classNames<span class="token operator">=</span><span class="token string">&quot;mini&quot;</span> 
+    onEnter<span class="token operator">=</span><span class="token punctuation">{</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+      miniPlayerRef<span class="token punctuation">.</span>current<span class="token punctuation">.</span>style<span class="token punctuation">.</span>display <span class="token operator">=</span> <span class="token string">&quot;flex&quot;</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">}</span>
+    onExited<span class="token operator">=</span><span class="token punctuation">{</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+      miniPlayerRef<span class="token punctuation">.</span>current<span class="token punctuation">.</span>style<span class="token punctuation">.</span>display <span class="token operator">=</span> <span class="token string">&quot;none&quot;</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">}</span>
+  <span class="token operator">&gt;</span>
+    <span class="token operator">&lt;</span>MiniPlayerContainer ref<span class="token operator">=</span><span class="token punctuation">{</span>miniPlayerRef<span class="token punctuation">}</span> onClick<span class="token operator">=</span><span class="token punctuation">{</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token function">setFullScreen</span><span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">}</span><span class="token operator">&gt;</span>
+      <span class="token comment">//其余代码不变 </span>
+    <span class="token operator">&lt;</span><span class="token operator">/</span>MiniPlayerContainer<span class="token operator">&gt;</span>
+  <span class="token operator">&lt;</span><span class="token operator">/</span>CSSTransition<span class="token operator">&gt;</span>
+<span class="token punctuation">)</span>
+</code></pre></div><p>关于mini动画钩子类在style.js中如下声明:</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">//NormalPlayerContainer组件下</span>
+<span class="token operator">&amp;</span><span class="token punctuation">.</span>mini<span class="token operator">-</span>enter<span class="token punctuation">{</span>
+  transform<span class="token punctuation">:</span> <span class="token function">translate3d</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">100</span><span class="token operator">%</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token operator">&amp;</span><span class="token punctuation">.</span>mini<span class="token operator">-</span>enter<span class="token operator">-</span>active<span class="token punctuation">{</span>
+  transform<span class="token punctuation">:</span> <span class="token function">translate3d</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  transition<span class="token punctuation">:</span> all <span class="token number">0.4</span>s<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token operator">&amp;</span><span class="token punctuation">.</span>mini<span class="token operator">-</span>exit<span class="token operator">-</span>active<span class="token punctuation">{</span>
+  transform<span class="token punctuation">:</span> <span class="token function">translate3d</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">100</span><span class="token operator">%</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  transition<span class="token punctuation">:</span> all <span class="token number">.4</span>s
+<span class="token punctuation">}</span>
+</code></pre></div><p>这样实现了miniPlayer进出的过渡效果。</p> <p>接下来需要用到JS的帧动画插件create-keyframe-animation</p> <div class="language-js extra-class"><pre class="language-js"><code>npm install create<span class="token operator">-</span>keyframe<span class="token operator">-</span>animation <span class="token operator">--</span>save
+</code></pre></div><h3 id="js实现帧动画"><a href="#js实现帧动画" aria-hidden="true" class="header-anchor">#</a> JS实现帧动画</h3> <p><code>接下来高能预警！</code></p> <p>先拿到一些关键元素的DOM对象。</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">const</span> normalPlayerRef <span class="token operator">=</span> <span class="token function">useRef</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> cdWrapperRef <span class="token operator">=</span> <span class="token function">useRef</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><p>分别对应：</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token operator">&lt;</span>NormalPlayerContainer ref<span class="token operator">=</span><span class="token punctuation">{</span>normalPlayerRef<span class="token punctuation">}</span><span class="token operator">&gt;</span>
+<span class="token comment">//...</span>
+  <span class="token operator">&lt;</span>Middle ref<span class="token operator">=</span><span class="token punctuation">{</span>cdWrapperRef<span class="token punctuation">}</span><span class="token operator">&gt;</span>
+</code></pre></div><p>现在，来开始着手写动画钩子的逻辑。</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">//引入的代码</span>
+<span class="token keyword">import</span> animations <span class="token keyword">from</span> <span class="token string">&quot;create-keyframe-animation&quot;</span><span class="token punctuation">;</span>
+
+<span class="token comment">//启用帧动画</span>
+<span class="token keyword">const</span> <span class="token function-variable function">enter</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  normalPlayerRef<span class="token punctuation">.</span>current<span class="token punctuation">.</span>style<span class="token punctuation">.</span>display <span class="token operator">=</span> <span class="token string">&quot;block&quot;</span><span class="token punctuation">;</span>
+  <span class="token keyword">const</span> <span class="token punctuation">{</span> x<span class="token punctuation">,</span> y<span class="token punctuation">,</span> scale <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token function">_getPosAndScale</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//获取miniPlayer图片中心相对normalPlayer唱片中心的偏移</span>
+  <span class="token keyword">let</span> animation <span class="token operator">=</span> <span class="token punctuation">{</span>
+    <span class="token number">0</span><span class="token punctuation">:</span> <span class="token punctuation">{</span>
+      transform<span class="token punctuation">:</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">translate3d(</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>x<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">px,</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>y<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">px,0) scale(</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>scale<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">)</span><span class="token template-punctuation string">`</span></span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token number">60</span><span class="token punctuation">:</span> <span class="token punctuation">{</span>
+      transform<span class="token punctuation">:</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">translate3d(0, 0, 0) scale(1.1)</span><span class="token template-punctuation string">`</span></span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token number">100</span><span class="token punctuation">:</span> <span class="token punctuation">{</span>
+      transform<span class="token punctuation">:</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">translate3d(0, 0, 0) scale(1)</span><span class="token template-punctuation string">`</span></span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span><span class="token punctuation">;</span>
+  animations<span class="token punctuation">.</span><span class="token function">registerAnimation</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+    name<span class="token punctuation">:</span> <span class="token string">&quot;move&quot;</span><span class="token punctuation">,</span>
+    animation<span class="token punctuation">,</span>
+    presets<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+      duration<span class="token punctuation">:</span> <span class="token number">400</span><span class="token punctuation">,</span>
+      easing<span class="token punctuation">:</span> <span class="token string">&quot;linear&quot;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  animations<span class="token punctuation">.</span><span class="token function">runAnimation</span><span class="token punctuation">(</span>cdWrapperRef<span class="token punctuation">.</span>current<span class="token punctuation">,</span> <span class="token string">&quot;move&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token comment">//计算偏移的辅助函数</span>
+<span class="token keyword">const</span> <span class="token function-variable function">_getPosAndScale</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> targetWidth <span class="token operator">=</span> <span class="token number">40</span><span class="token punctuation">;</span>
+  <span class="token keyword">const</span> paddingLeft <span class="token operator">=</span> <span class="token number">40</span><span class="token punctuation">;</span>
+  <span class="token keyword">const</span> paddingBottom <span class="token operator">=</span> <span class="token number">30</span><span class="token punctuation">;</span>
+  <span class="token keyword">const</span> paddingTop <span class="token operator">=</span> <span class="token number">80</span><span class="token punctuation">;</span>
+  <span class="token keyword">const</span> width <span class="token operator">=</span> window<span class="token punctuation">.</span>innerWidth <span class="token operator">*</span> <span class="token number">0.8</span><span class="token punctuation">;</span>
+  <span class="token keyword">const</span> scale <span class="token operator">=</span> targetWidth <span class="token operator">/</span> width<span class="token punctuation">;</span>
+  <span class="token comment">// 两个圆心的横坐标距离和纵坐标距离</span>
+  <span class="token keyword">const</span> x <span class="token operator">=</span> <span class="token operator">-</span><span class="token punctuation">(</span>window<span class="token punctuation">.</span>innerWidth <span class="token operator">/</span> <span class="token number">2</span> <span class="token operator">-</span> paddingLeft<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">const</span> y <span class="token operator">=</span> window<span class="token punctuation">.</span>innerHeight <span class="token operator">-</span> paddingTop <span class="token operator">-</span> width <span class="token operator">/</span> <span class="token number">2</span> <span class="token operator">-</span> paddingBottom<span class="token punctuation">;</span>
+  <span class="token keyword">return</span> <span class="token punctuation">{</span>
+    x<span class="token punctuation">,</span>
+    y<span class="token punctuation">,</span>
+    scale
+  <span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</code></pre></div><div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">const</span> <span class="token function-variable function">afterEnter</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  <span class="token comment">// 进入后解绑帧动画</span>
+  <span class="token keyword">const</span> cdWrapperDom <span class="token operator">=</span> cdWrapperRef<span class="token punctuation">.</span>current<span class="token punctuation">;</span>
+  animations<span class="token punctuation">.</span><span class="token function">unregisterAnimation</span><span class="token punctuation">(</span><span class="token string">&quot;move&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  cdWrapperDom<span class="token punctuation">.</span>style<span class="token punctuation">.</span>animation <span class="token operator">=</span> <span class="token string">&quot;&quot;</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</code></pre></div><p>现在可以看到这样的进场效果。</p> <img src="/react-cloud-music/chapter8/keyframes.gif" alt="project"> <p>但是，这还不够！</p> <p>我们可以让Top和Bottom都跟着动起来。</p> <p>还记得刚刚写过的&quot;normal&quot;的钩子类吗？我们利用贝塞尔动画曲线给它们一个过渡。</p> <div class="language- extra-class"><pre class="language-text"><code>//normalPlayer/style.js
+//NormalPlayerContainer样式组件下
+&amp;.normal-enter,
+&amp;.normal-exit-done {
+  .top {
+    transform: translate3d(0, -100px, 0);
+  }
+  .bottom {
+    transform: translate3d(0, 100px, 0);
+  }
+}
+&amp;.normal-enter-active,
+&amp;.normal-exit-active {
+  .top,
+  .bottom {
+    transform: translate3d(0, 0, 0);
+    transition: all 0.4s cubic-bezier(0.86, 0.18, 0.82, 1.32);
+  }
+  opacity: 1;
+  transition: all 0.4s;
+}
+&amp;.normal-exit-active {
+  opacity: 0;
+}
+</code></pre></div><p>仔细观察，Top和Bottom部分出现的相应的过渡，可以发现现在的效果较之前是更加灵动的:</p> <img src="/react-cloud-music/chapter8/transition.gif" alt="project"> <h2 id="出场动画"><a href="#出场动画" aria-hidden="true" class="header-anchor">#</a> 出场动画</h2> <p>首先声明一下，我们实现的出场动画是基于transform属性的，但是transform在不同的浏览器厂商会有不同的前缀，入这个问题在CSS中可以用postcss等工具来解决，但是JS中我们现在只有自己来处理了。</p> <p>在api/utils.js中添加:</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">// 给css3相关属性增加浏览器前缀，处理浏览器兼容性问题</span>
+<span class="token keyword">let</span> elementStyle <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">createElement</span><span class="token punctuation">(</span><span class="token string">&quot;div&quot;</span><span class="token punctuation">)</span><span class="token punctuation">.</span>style<span class="token punctuation">;</span>
+
+<span class="token keyword">let</span> vendor <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  <span class="token comment">//首先通过transition属性判断是何种浏览器</span>
+  <span class="token keyword">let</span> transformNames <span class="token operator">=</span> <span class="token punctuation">{</span>
+    webkit<span class="token punctuation">:</span> <span class="token string">&quot;webkitTransform&quot;</span><span class="token punctuation">,</span>
+    Moz<span class="token punctuation">:</span> <span class="token string">&quot;MozTransform&quot;</span><span class="token punctuation">,</span>
+    <span class="token constant">O</span><span class="token punctuation">:</span> <span class="token string">&quot;OTransfrom&quot;</span><span class="token punctuation">,</span>
+    ms<span class="token punctuation">:</span> <span class="token string">&quot;msTransform&quot;</span><span class="token punctuation">,</span>
+    standard<span class="token punctuation">:</span> <span class="token string">&quot;Transform&quot;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">;</span>
+  <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> key <span class="token keyword">in</span> transformNames<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>elementStyle<span class="token punctuation">[</span>transformNames<span class="token punctuation">[</span>key<span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token operator">!==</span> <span class="token keyword">undefined</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">return</span> key<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+  <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">export</span> <span class="token keyword">function</span> <span class="token function">prefixStyle</span><span class="token punctuation">(</span><span class="token parameter">style</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>vendor <span class="token operator">===</span> <span class="token boolean">false</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>vendor <span class="token operator">===</span> <span class="token string">&quot;standard&quot;</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> style<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token keyword">return</span> vendor <span class="token operator">+</span> style<span class="token punctuation">.</span><span class="token function">charAt</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toUpperCase</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">+</span> style<span class="token punctuation">.</span><span class="token function">substr</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>然后在normalPlayer/index.js中引入prefixStyle方法。</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">import</span> <span class="token punctuation">{</span> prefixStyle <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&quot;../../../api/utils&quot;</span><span class="token punctuation">;</span>
+
+<span class="token comment">//组件代码中加入</span>
+<span class="token keyword">const</span> transform <span class="token operator">=</span> <span class="token function">prefixStyle</span><span class="token punctuation">(</span><span class="token string">&quot;transform&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><p>接下来写离开动画的逻辑:</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">const</span> <span class="token function-variable function">leave</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>cdWrapperRef<span class="token punctuation">.</span>current<span class="token punctuation">)</span> <span class="token keyword">return</span><span class="token punctuation">;</span>
+  <span class="token keyword">const</span> cdWrapperDom <span class="token operator">=</span> cdWrapperRef<span class="token punctuation">.</span>current<span class="token punctuation">;</span>
+  cdWrapperDom<span class="token punctuation">.</span>style<span class="token punctuation">.</span>transition <span class="token operator">=</span> <span class="token string">&quot;all 0.4s&quot;</span><span class="token punctuation">;</span>
+  <span class="token keyword">const</span> <span class="token punctuation">{</span> x<span class="token punctuation">,</span> y<span class="token punctuation">,</span> scale <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token function">_getPosAndScale</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  cdWrapperDom<span class="token punctuation">.</span>style<span class="token punctuation">[</span>transform<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">translate3d(</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>x<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">px, </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>y<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">px, 0) scale(</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>scale<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">)</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> <span class="token function-variable function">afterLeave</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>cdWrapperRef<span class="token punctuation">.</span>current<span class="token punctuation">)</span> <span class="token keyword">return</span><span class="token punctuation">;</span>
+  <span class="token keyword">const</span> cdWrapperDom <span class="token operator">=</span> cdWrapperRef<span class="token punctuation">.</span>current<span class="token punctuation">;</span>
+  cdWrapperDom<span class="token punctuation">.</span>style<span class="token punctuation">.</span>transition <span class="token operator">=</span> <span class="token string">&quot;&quot;</span><span class="token punctuation">;</span>
+  cdWrapperDom<span class="token punctuation">.</span>style<span class="token punctuation">[</span>transform<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">&quot;&quot;</span><span class="token punctuation">;</span>
+  <span class="token comment">// 一定要注意现在要把normalPlayer这个DOM给隐藏掉，因为CSSTransition的工作只是把动画执行一遍 </span>
+  <span class="token comment">// 不置为none现在全屏播放器页面还是存在</span>
+  normalPlayerRef<span class="token punctuation">.</span>current<span class="token punctuation">.</span>style<span class="token punctuation">.</span>display <span class="token operator">=</span> <span class="token string">&quot;none&quot;</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</code></pre></div><img src="/react-cloud-music/chapter8/complete.gif" alt="project"> <p>OK, 至此我们的进场和出场动画就开发完成了！是不是get到很多新姿势呢：）</p></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+        ←
+        <a href="/react-cloud-music/chapter8/data.html" class="prev">
+          数据层准备
+        </a></span> <span class="next"><a href="/react-cloud-music/chapter8/progress.html">
+          进度条组件开发(环形和线形)
+        </a>
+        →
+      </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/react-cloud-music/assets/js/app.16cf2874.js" defer></script><script src="/react-cloud-music/assets/js/2.8eb8cfb1.js" defer></script><script src="/react-cloud-music/assets/js/46.802a45ca.js" defer></script>
+  </body>
+</html>
